@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Facebook, Mail } from 'lucide-react';
 
 interface FooterProps {
   scrollTo: (target: string) => void;
@@ -61,11 +61,11 @@ const Footer = ({ scrollTo }: FooterProps) => {
                 <Github size={18} />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/share/15Yynm55Ym/?mibextid=LQQJ4d"
                 className="transition-colors duration-200 hover:text-[var(--accent-coral)]"
                 style={{ color: 'var(--text-secondary)' }}
               >
-                <Linkedin size={18} />
+                <Facebook size={18} />
               </a>
               <a
                 href="mailto:thangnnv2003@gmail.com"

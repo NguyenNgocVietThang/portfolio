@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionHeading from '@/components/SectionHeading';
-import { Mail, Phone, MapPin, Github, Linkedin, Send, Check, Loader2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Facebook, Send, Check, Loader2 } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -248,7 +248,7 @@ const ContactSection = () => {
               <div className="flex gap-3">
                 {[
                   { icon: Github, href: 'https://github.com/NguyenNgocVietThang' },
-                  { icon: Linkedin, href: '#' },
+                  { icon: Facebook, href: 'https://www.facebook.com/share/15Yynm55Ym/?mibextid=LQQJ4d' },
                   { icon: Mail, href: 'mailto:thangnnv2003@gmail.com' },
                 ].map((social, i) => {
                   const Icon = social.icon;

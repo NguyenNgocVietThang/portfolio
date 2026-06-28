@@ -109,7 +109,10 @@ const Navigation = ({ scrollTo }: NavigationProps) => {
           </div>
 
           {/* CTA button */}
-          <button
+          <a
+            href="https://drive.google.com/file/d/18WslqjXZN5bgS1ldUMU-cni_gJTYQiO2/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden md:block transition-all duration-200"
             style={{
               padding: '8px 24px',
@@ -118,6 +121,7 @@ const Navigation = ({ scrollTo }: NavigationProps) => {
               color: 'var(--accent-coral)',
               fontSize: 14,
               fontWeight: 500,
+              textDecoration: 'none',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.backgroundColor = 'var(--accent-coral)';
@@ -129,7 +133,7 @@ const Navigation = ({ scrollTo }: NavigationProps) => {
             }}
           >
             Download CV
-          </button>
+          </a>
 
           {/* Mobile hamburger */}
           <button
