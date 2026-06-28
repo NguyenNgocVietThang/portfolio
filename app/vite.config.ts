@@ -1,7 +1,7 @@
 import path from "path"
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
-// @ts-expect-error: this plugin does not have type definitions
+// @ts-ignore: this plugin does not have type definitions
 import { inspectAttr } from 'kimi-plugin-inspect-react'
 
 // https://vite.dev/config/
