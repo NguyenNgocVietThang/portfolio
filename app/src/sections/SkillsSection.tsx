@@ -70,7 +70,7 @@ const SkillsSection = () => {
           scrollTrigger: {
             trigger: item,
             start: 'top 90%',
-            toggleActions: 'play none none none',
+            toggleActions: 'play reverse play reverse',
           },
         }
       );
@@ -87,7 +87,7 @@ const SkillsSection = () => {
             scrollTrigger: {
               trigger: item,
               start: 'top 85%',
-              toggleActions: 'play none none none',
+              toggleActions: 'play reverse play reverse',
             },
           }
         );
@@ -106,7 +106,7 @@ const SkillsSection = () => {
             scrollTrigger: {
               trigger: item,
               start: 'top 85%',
-              toggleActions: 'play none none none',
+              toggleActions: 'play reverse play reverse',
             },
           }
         );
@@ -128,7 +128,7 @@ const SkillsSection = () => {
           scrollTrigger: {
             trigger: toolsRef.current,
             start: 'top 85%',
-            toggleActions: 'play none none none',
+            toggleActions: 'play reverse play reverse',
           },
         }
       );

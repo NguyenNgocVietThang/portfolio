@@ -62,7 +62,7 @@ const PortfolioSection = () => {
         scrollTrigger: {
           trigger: diagramRef.current,
           start: 'top 80%',
-          toggleActions: 'play none none none',
+          toggleActions: 'play reverse play reverse',
         },
       }
     );
@@ -78,7 +78,7 @@ const PortfolioSection = () => {
         scrollTrigger: {
           trigger: diagramRef.current,
           start: 'top 75%',
-          toggleActions: 'play none none none',
+          toggleActions: 'play reverse play reverse',
         },
       }
     );

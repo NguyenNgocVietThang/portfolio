@@ -49,7 +49,7 @@ const ContactSection = () => {
           scrollTrigger: {
             trigger: cardsRef.current,
             start: 'top 85%',
-            toggleActions: 'play none none none',
+            toggleActions: 'play reverse play reverse',
           },
         }
       );
@@ -70,7 +70,7 @@ const ContactSection = () => {
           scrollTrigger: {
             trigger: formRef.current,
             start: 'top 85%',
-            toggleActions: 'play none none none',
+            toggleActions: 'play reverse play reverse',
           },
         }
       );
@@ -90,7 +90,7 @@ const ContactSection = () => {
           scrollTrigger: {
             trigger: formRef.current,
             start: 'top 85%',
-            toggleActions: 'play none none none',
+            toggleActions: 'play reverse play reverse',
           },
         }
       );

@@ -165,7 +165,7 @@ const HeroSection = ({ isReady, scrollTo }: HeroSectionProps) => {
               className="font-body-large text-base md:text-xl mt-6 mx-auto lg:mx-0 opacity-0"
               style={{ color: 'var(--text-secondary)', maxWidth: 480, lineHeight: 1.6 }}
             >
-              Final-year Information Technology student at the Academy of Cryptography Techniques with a GPA of 3.21/4.0.
+              Final-year Information Technology student at the Academy of Cryptography Techniques with a GPA of 3.21/4.0. Currently building an AI-integrated Project Management System — a full-stack web application as a personal project to showcase end-to-end BA skills: requirements engineering, process design, system architecture documentation, and AI-driven process automation.
             </p>
 
             {/* CTA buttons */}

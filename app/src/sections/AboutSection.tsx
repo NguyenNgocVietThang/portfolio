@@ -6,13 +6,6 @@ import { FileText, Workflow, Code2, Wrench, CheckCircle2 } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const stats = [
-  { number: 32, label: 'Tables in ERD', color: 'var(--accent-coral)' },
-  { number: 8, label: 'SOPs Designed', color: 'var(--accent-amber)' },
-  { number: 7, label: 'RBAC Roles', color: 'var(--accent-coral)' },
-  { number: 33, label: 'Permissions', color: 'var(--accent-amber)' },
-];
-
 const competencies = [
   {
     icon: FileText,
@@ -38,7 +31,6 @@ const competencies = [
 
 const AboutSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -59,51 +51,10 @@ const AboutSection = () => {
           scrollTrigger: {
             trigger: contentRef.current,
             start: 'top 85%',
-            toggleActions: 'play none none none',
+            toggleActions: 'play reverse play reverse',
           },
         }
       );
-    }
-
-    // Stats count-up animation
-    if (statsRef.current) {
-      const statEls = statsRef.current.querySelectorAll('.stat-item');
-      statEls.forEach((el) => {
-        const numEl = el.querySelector('.stat-number');
-        const target = parseInt(numEl?.getAttribute('data-target') || '0', 10);
-        const proxy = { value: 0 };
-
-        gsap.fromTo(
-          el,
-          { opacity: 0, y: 40 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: el,
-              start: 'top 75%',
-              toggleActions: 'play none none none',
-            },
-          }
-        );
-
-        gsap.to(proxy, {
-          value: target,
-          duration: 1.5,
-          ease: 'power2.out',
-          snap: { value: 1 },
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 75%',
-            toggleActions: 'play none none none',
-          },
-          onUpdate: () => {
-            if (numEl) numEl.textContent = String(Math.round(proxy.value));
-          },
-        });
-      });
     }
 
     // Competency cards entrance
@@ -122,7 +73,7 @@ const AboutSection = () => {
           scrollTrigger: {
             trigger: cardsRef.current,
             start: 'top 85%',
-            toggleActions: 'play none none none',
+            toggleActions: 'play reverse play reverse',
           },
         }
       );
@@ -162,9 +113,9 @@ const AboutSection = () => {
         <SectionHeading number="01" title="OVERVIEW" subtitle="Future Business Analyst" />
 
         {/* Content row */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 mt-16 lg:mt-20">
-          {/* Left - Bio */}
-          <div ref={contentRef} className="lg:col-span-2" style={{ transformStyle: 'preserve-3d' }}>
+        <div className="mt-16 lg:mt-20">
+          {/* Bio */}
+          <div ref={contentRef} className="max-w-4xl" style={{ transformStyle: 'preserve-3d' }}>
             <div className="font-caption mb-6" style={{ color: 'var(--accent-coral)' }}>
               ABOUT ME
             </div>
@@ -203,24 +154,6 @@ const AboutSection = () => {
                 <span className="font-body ml-2" style={{ color: 'var(--text-primary)' }}>English B2 Level</span>
               </div>
             </div>
-          </div>
-
-          {/* Right - Stats */}
-          <div ref={statsRef} className="lg:col-span-3 grid grid-cols-2 gap-8">
-            {stats.map((stat, i) => (
-              <div key={i} className="stat-item">
-                <div
-                  className="stat-number font-display text-5xl md:text-6xl lg:text-[64px]"
-                  style={{ color: stat.color }}
-                  data-target={stat.number}
-                >
-                  0
-                </div>
-                <div className="font-body text-sm mt-2" style={{ color: 'var(--text-secondary)' }}>
-                  {stat.label}
-                </div>
-              </div>
-            ))}
           </div>
         </div>
 

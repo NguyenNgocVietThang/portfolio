@@ -30,7 +30,7 @@ const SectionHeading = ({ number, title, subtitle }: SectionHeadingProps) => {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top 80%',
-          toggleActions: 'play none none none',
+          toggleActions: 'play reverse play reverse',
         },
       }
     );
@@ -49,7 +49,7 @@ const SectionHeading = ({ number, title, subtitle }: SectionHeadingProps) => {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top 80%',
-          toggleActions: 'play none none none',
+          toggleActions: 'play reverse play reverse',
         },
       }
     );
