@@ -29,7 +29,7 @@ const entries: TimelineEntry[] = [
   {
     id: '2',
     category: 'project',
-    date: '2025',
+    date: '2026',
     title: 'AI Project Management System',
     organization: 'Personal Project - Full-stack Web App',
     description: 'Building an AI-integrated project and portfolio management system. Role: Business Analyst — responsible for all BRD, SRS, 32-table ERD, BPMN, Use Cases, and RBAC matrix with 7 roles/33 permissions. Technologies: FastAPI, React 18, PostgreSQL, OpenAI GPT-4o, Gemini Pro.',
@@ -38,7 +38,7 @@ const entries: TimelineEntry[] = [
   {
     id: '3',
     category: 'certificate',
-    date: '2025',
+    date: '2026',
     title: 'Business Analysis Fundamentals',
     organization: 'BA Competency Certificate',
     description: 'Completed a foundational course on Business Analysis, covering: requirement elicitation techniques, As-Is/To-Be analysis, Use Case modeling, and project scope management.',
