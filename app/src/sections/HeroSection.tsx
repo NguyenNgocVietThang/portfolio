@@ -119,7 +119,7 @@ const HeroSection = ({ isReady, scrollTo }: HeroSectionProps) => {
             {/* Name Line 1 */}
             <div ref={name1Ref} className="overflow-hidden">
               <div className="font-display text-5xl md:text-7xl lg:text-[100px]" style={{ color: 'var(--text-primary)' }}>
-                {['NGUYEN', 'NGOC'].map((word, i) => (
+                {['Nguyễn', 'Ngọc'].map((word, i) => (
                   <span key={i} className="hero-word inline-block mr-[0.2em]" style={{ clipPath: 'inset(0 0 100% 0)' }}>
                     {word}
                   </span>
@@ -130,13 +130,13 @@ const HeroSection = ({ isReady, scrollTo }: HeroSectionProps) => {
             {/* Name Line 2 */}
             <div ref={name2Ref} className="overflow-hidden">
               <div className="font-display text-5xl md:text-7xl lg:text-[100px]" style={{ color: 'var(--text-primary)' }}>
-                {['VIET', 'THANG'].map((word, i) => (
+                {['Việt', 'Thắng'].map((word, i) => (
                   <span
                     key={i}
                     className="hero-word inline-block mr-[0.2em]"
                     style={{
                       clipPath: 'inset(0 0 100% 0)',
-                      textShadow: word === 'THANG' ? '0 0 60px rgba(255, 107, 91, 0.3)' : 'none',
+                      textShadow: word === 'Thắng' ? '0 0 60px rgba(255, 107, 91, 0.3)' : 'none',
                     }}
                   >
                     {word}
@@ -165,7 +165,7 @@ const HeroSection = ({ isReady, scrollTo }: HeroSectionProps) => {
               className="font-body-large text-base md:text-xl mt-6 mx-auto lg:mx-0 opacity-0"
               style={{ color: 'var(--text-secondary)', maxWidth: 480, lineHeight: 1.6 }}
             >
-              Final-year student majoring in Information Technology at the Academy of Cryptography Techniques. Currently building an AI-integrated project management system as a personal project.
+              Final-year Information Technology student at the Academy of Cryptography Techniques with a GPA of 3.21/4.0.
             </p>
 
             {/* CTA buttons */}
@@ -247,7 +247,7 @@ const HeroSection = ({ isReady, scrollTo }: HeroSectionProps) => {
               >
                 <img
                   src="/assets/portrait.jpg"
-                  alt="Nguyen Ngoc Viet Thang"
+                  alt="Nguyễn Ngọc Việt Thắng"
                   className="w-full h-full object-cover"
                   style={{ borderRadius: '50%' }}
                 />

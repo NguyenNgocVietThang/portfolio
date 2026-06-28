@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionHeading from '@/components/SectionHeading';
-import { FileText, Workflow, Code2, Wrench } from 'lucide-react';
+import { FileText, Workflow, Code2, Wrench, CheckCircle2 } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -129,7 +129,7 @@ const AboutSection = () => {
     }
 
     return () => {
-      ScrollTrigger.getAll().forEach((st) => {
+      ScrollTrigger.getAll().forEach((st: any) => {
         if (st.trigger && sectionRef.current?.contains(st.trigger as Element)) {
           st.kill();
         }
@@ -159,7 +159,7 @@ const AboutSection = () => {
       />
 
       <div className="max-w-[1280px] mx-auto relative" style={{ zIndex: 2 }}>
-        <SectionHeading number="01" title="TONG QUAN" subtitle="Chuyen gia phan tich nghiep vu tuong lai" />
+        <SectionHeading number="01" title="OVERVIEW" subtitle="Future Business Analyst" />
 
         {/* Content row */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 mt-16 lg:mt-20">
@@ -168,9 +168,41 @@ const AboutSection = () => {
             <div className="font-caption mb-6" style={{ color: 'var(--accent-coral)' }}>
               ABOUT ME
             </div>
-            <p className="font-body-large text-lg md:text-xl" style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
-              Final-year student majoring in Information Technology at the Academy of Cryptography Techniques (ACTVN), actively developing practical capabilities in the field of Business Analysis. Currently building an AI-integrated Project Management System — a full-stack web application as a personal project to showcase end-to-end BA skills: requirements engineering, process design, system architecture documentation, and AI-driven process automation.
-            </p>
+            <div className="space-y-4">
+              <p className="font-body-large text-lg md:text-xl" style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
+                Final-year Information Technology student at the Academy of Cryptography Techniques with a GPA of 3.21/4.0. Strong interest in Business Analysis, Software Development Life Cycle (SDLC), and system design.
+              </p>
+              <p className="font-body-large text-lg md:text-xl" style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
+                Experienced in analyzing business requirements through academic projects, creating system models, and documenting software requirements.
+              </p>
+              <p className="font-body-large text-lg md:text-xl" style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
+                Seeking a Business Analyst Intern position to further develop expertise in requirement gathering, process analysis, User Story creation, Use Case modeling, and stakeholder communication.
+              </p>
+            </div>
+            
+            <div className="mt-10">
+              <div className="font-caption mb-5" style={{ color: 'var(--accent-coral)' }}>
+                PERSONAL STRENGTHS
+              </div>
+              <ul className="space-y-3">
+                {[
+                  'Good analytical and logical thinking',
+                  'Eager to learn and possess a growth mindset',
+                  'Detail-oriented and highly responsible',
+                  'Effective communication and teamwork',
+                  'Problem-solving and critical thinking skills'
+                ].map((strength, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <CheckCircle2 size={20} style={{ color: 'var(--accent-amber)', flexShrink: 0, marginTop: 4 }} />
+                    <span className="font-body text-base md:text-lg" style={{ color: 'var(--text-secondary)' }}>{strength}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 inline-block px-5 py-2.5 rounded-full border transition-colors hover:bg-[var(--surface-hover)]" style={{ borderColor: 'var(--border-active)', backgroundColor: 'var(--surface)' }}>
+                <span className="font-body font-medium" style={{ color: 'var(--accent-champagne)' }}>Language:</span>
+                <span className="font-body ml-2" style={{ color: 'var(--text-primary)' }}>English B2 Level</span>
+              </div>
+            </div>
           </div>
 
           {/* Right - Stats */}

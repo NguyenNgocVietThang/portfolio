@@ -55,7 +55,7 @@ const SectionHeading = ({ number, title, subtitle }: SectionHeadingProps) => {
     );
 
     return () => {
-      ScrollTrigger.getAll().forEach((st) => {
+      ScrollTrigger.getAll().forEach((st: any) => {
         if (st.trigger === containerRef.current) st.kill();
       });
     };

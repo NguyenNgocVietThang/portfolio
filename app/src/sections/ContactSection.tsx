@@ -97,7 +97,7 @@ const ContactSection = () => {
     }
 
     return () => {
-      ScrollTrigger.getAll().forEach((st) => {
+      ScrollTrigger.getAll().forEach((st: any) => {
         if (st.trigger && sectionRef.current?.contains(st.trigger as Element)) {
           st.kill();
         }

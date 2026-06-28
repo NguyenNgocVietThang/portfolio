@@ -33,7 +33,7 @@ function App() {
 
     // Sync Lenis with GSAP
     lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add((time) => {
+    gsap.ticker.add((time: number) => {
       lenis.raf(time * 1000);
     });
     gsap.ticker.lagSmoothing(0);
@@ -55,7 +55,7 @@ function App() {
     return () => {
       lenis.destroy();
       gsap.ticker.remove(lenis.raf);
-      ScrollTrigger.getAll().forEach(st => st.kill());
+      ScrollTrigger.getAll().forEach((st: any) => st.kill());
     };
   }, []);
 
