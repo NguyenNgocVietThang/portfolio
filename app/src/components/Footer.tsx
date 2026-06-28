@@ -83,7 +83,7 @@ const Footer = ({ scrollTo }: FooterProps) => {
 
         {/* Copyright */}
         <div className="text-center font-caption" style={{ color: 'var(--text-secondary)' }}>
-          &copy; 2025 Nguyen Ngoc Viet Thang. All rights reserved.
+          &copy; 2026 Nguyen Ngoc Viet Thang. All rights reserved.
         </div>
       </div>
     </footer>
