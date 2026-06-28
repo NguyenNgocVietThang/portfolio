@@ -1,0 +1,256 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #111111;
+    --surface: #1A1A1A;
+    --text-primary: #F5F0EB;
+    --text-secondary: #8A8A8A;
+    --accent-coral: #FF6B5B;
+    --accent-champagne: #F5E6C8;
+    --accent-amber: #D4943A;
+    --glow-coral: rgba(255, 107, 91, 0.15);
+    --glow-champagne: rgba(245, 230, 200, 0.12);
+    --border-color: rgba(245, 240, 235, 0.08);
+    --border-active: rgba(245, 240, 235, 0.2);
+    --progress-track: rgba(245, 240, 235, 0.06);
+
+    --font-sans: 'Be Vietnam Pro', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-serif: 'Instrument Serif', serif;
+
+    --radius: 0.5rem;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--background);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--accent-coral);
+    color: #111111;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: var(--font-sans);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -4px;
+  }
+
+  .font-heading {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -2px;
+  }
+
+  .font-heading-2 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    line-height: 1.0;
+    letter-spacing: -1px;
+  }
+
+  .font-heading-3 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    line-height: 1.1;
+  }
+
+  .font-body {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+  }
+
+  .font-body-large {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+  }
+
+  .font-caption {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .font-mono-text {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  .font-serif-italic {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  /* Liquid Glass */
+  .liquid-glass {
+    background: rgba(26, 26, 26, 0.35);
+    background-blend-mode: luminosity;
+    backdrop-filter: blur(6px) saturate(140%);
+    -webkit-backdrop-filter: blur(6px) saturate(140%);
+    border: none;
+    box-shadow:
+      inset 0 1px 1px rgba(255,255,255,0.1),
+      0 8px 32px rgba(0,0,0,0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .liquid-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.4px;
+    background: linear-gradient(180deg, rgba(245,230,200,0.5) 0%, rgba(245,230,200,0.15) 20%, rgba(245,230,200,0) 40%, rgba(245,230,200,0) 60%, rgba(245,230,200,0.15) 80%, rgba(245,230,200,0.5) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    opacity: 0.25;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  .liquid-glass::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+      radial-gradient(ellipse 90% 40% at 50% 0%, rgba(255,255,255,0.18) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 35% at 65% 10%, rgba(245,230,200,0.08) 0%, transparent 50%);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+
+  @keyframes shimmer {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.35; }
+  }
+
+  /* Portrait circle */
+  .portrait-circle {
+    position: relative;
+    border-radius: 50%;
+    padding: 4px;
+    overflow: hidden;
+  }
+
+  .portrait-circle::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, #FF6B5B, #F5E6C8, #D4943A, #FF6B5B);
+    animation: rotateBorder 20s linear infinite;
+    z-index: 0;
+  }
+
+  .portrait-circle img {
+    position: relative;
+    z-index: 1;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @keyframes rotateBorder {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(-10px); }
+    50% { transform: translateY(10px); }
+  }
+
+  @keyframes pulse-orb {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+
+  /* Grid overlay */
+  .grid-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(245,240,235,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,240,235,0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.02;
+    will-change: opacity;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-active);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-coral);
+  }
+}
+
+@layer utilities {
+  .text-accent-coral {
+    color: var(--accent-coral);
+  }
+  .text-accent-champagne {
+    color: var(--accent-champagne);
+  }
+  .text-accent-amber {
+    color: var(--accent-amber);
+  }
+  .text-text-primary {
+    color: var(--text-primary);
+  }
+  .text-text-secondary {
+    color: var(--text-secondary);
+  }
+  .bg-surface {
+    background-color: var(--surface);
+  }
+  .border-default {
+    border-color: var(--border-color);
+  }
+  .border-active {
+    border-color: var(--border-active);
+  }
+}
