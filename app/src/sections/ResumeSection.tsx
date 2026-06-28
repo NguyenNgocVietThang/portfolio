@@ -13,7 +13,7 @@ interface TimelineEntry {
   date: string;
   title: string;
   organization: string;
-  description: string;
+  description: React.ReactNode;
   tags?: string[];
 }
 
@@ -32,7 +32,17 @@ const entries: TimelineEntry[] = [
     date: '2026',
     title: 'AI Project Management System',
     organization: 'Personal Project - Full-stack Web App',
-    description: 'Building an AI-integrated project and portfolio management system. Role: Business Analyst — responsible for all BRD, SRS, 32-table ERD, BPMN, Use Cases, and RBAC matrix with 7 roles/33 permissions. Technologies: FastAPI, React 18, PostgreSQL, OpenAI GPT-4o, Gemini Pro.',
+    description: (
+      <div className="space-y-3">
+        <p>In this end-to-end full-stack web application, I operated as the sole Business Analyst, taking charge of the entire requirements engineering process. My work involved:</p>
+        <ul className="list-disc pl-5 space-y-2">
+          <li><strong>Requirement Elicitation & Analysis:</strong> Utilized extensive document analysis to capture and structure complex project management workflows.</li>
+          <li><strong>Comprehensive Documentation:</strong> Single-handedly crafted all core business documents and system models, including the Business Requirements Document (BRD), Software Requirements Specification (SRS), multi-lane BPMN 2.0 process flows, Use Case models, and a robust 32-table Entity-Relationship Diagram (ERD) paired with a 33-permission RBAC matrix.</li>
+          <li><strong>AI Feature Design:</strong> Designed and mapped out all AI integration functionalities, specifying how models like GPT-4o and Gemini Pro would interact with the system to automate tasks and summarize data.</li>
+          <li><strong>Product Management via AI:</strong> While I maintained absolute control over the product's business logic and user experience as a BA, I effectively collaborated with AI tools for the actual code implementation (vibe coding). This hybrid approach demonstrated my strong logical thinking and ability to bridge the gap between business needs and technical execution.</li>
+        </ul>
+      </div>
+    ),
     tags: ['FastAPI', 'React', 'PostgreSQL', 'AI'],
   },
   {
@@ -262,9 +272,9 @@ const ResumeSection = () => {
                   <div className="font-body text-sm font-medium mt-1" style={{ color: 'var(--accent-champagne)' }}>
                     {entry.organization}
                   </div>
-                  <p className="font-body text-[15px] mt-4" style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                  <div className="font-body text-[15px] mt-4" style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
                     {entry.description}
-                  </p>
+                  </div>
                   {entry.tags && (
                     <div className="flex flex-wrap gap-2 mt-4">
                       {entry.tags.map((tag, i) => (
