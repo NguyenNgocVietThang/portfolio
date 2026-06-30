@@ -2,7 +2,22 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionHeading from '@/components/SectionHeading';
-import { ChevronLeft, ChevronRight, Play, Github } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, Github, FileText, Check, AlertTriangle, ArrowRight, User, Settings, Info } from 'lucide-react';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@/components/ui/tabs';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -260,45 +275,393 @@ const PortfolioSection = () => {
               <h3 className="font-heading-2 text-2xl md:text-[32px]" style={{ color: 'var(--text-primary)' }}>
                 AI-Integrated Project Management System
               </h3>
-              <a
-                href="https://github.com/NguyenNgocVietThang/ai-project-management"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor="link"
-                className="flex items-center gap-2 transition-all duration-200 flex-shrink-0"
-                style={{
-                  padding: '10px 24px',
-                  borderRadius: 100,
-                  border: '1px solid var(--accent-coral)',
-                  color: 'var(--accent-coral)',
-                  fontSize: 14,
-                  fontWeight: 500,
-                  width: 'fit-content',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = 'var(--accent-coral)';
-                  e.currentTarget.style.color = '#111111';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'transparent';
-                  e.currentTarget.style.color = 'var(--accent-coral)';
-                }}
-              >
-                <Github size={16} />
-                View on GitHub
-              </a>
+              <div className="flex gap-3 flex-wrap flex-shrink-0 mt-2 md:mt-0">
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <button
+                      data-cursor="link"
+                      className="flex items-center gap-2 transition-all duration-200"
+                      style={{
+                        padding: '10px 24px',
+                        borderRadius: 100,
+                        backgroundColor: 'var(--accent-coral)',
+                        color: '#111111',
+                        fontSize: 14,
+                        fontWeight: 500,
+                        border: '1px solid transparent',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = 'transparent';
+                        e.currentTarget.style.color = 'var(--accent-coral)';
+                        e.currentTarget.style.borderColor = 'var(--accent-coral)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = 'var(--accent-coral)';
+                        e.currentTarget.style.color = '#111111';
+                        e.currentTarget.style.borderColor = 'transparent';
+                      }}
+                    >
+                      <FileText size={16} />
+                      View BA Documentation
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto border-zinc-800 bg-[#0B0B0B] text-zinc-100 p-6 md:p-8">
+                    <DialogHeader className="border-b border-zinc-800 pb-4 mb-6">
+                      <DialogTitle className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+                        <FileText className="text-[var(--accent-coral)]" />
+                        AI Project Planning &amp; Portfolio Management System
+                      </DialogTitle>
+                      <DialogDescription className="text-zinc-400 text-sm mt-1">
+                        Comprehensive Business Analysis Artifacts (BRD, SRS, Process Models and User Stories) — Authored by Nguyen Ngoc Viet Thang
+                      </DialogDescription>
+                    </DialogHeader>
+
+                    <Tabs defaultValue="context" className="w-full">
+                      <TabsList className="grid w-full grid-cols-4 bg-[#141414] p-1 border border-zinc-800 rounded-lg mb-6">
+                        <TabsTrigger value="context" className="data-[state=active]:bg-[var(--accent-coral)] data-[state=active]:text-[#111111] py-2">Context &amp; Modeling</TabsTrigger>
+                        <TabsTrigger value="brd" className="data-[state=active]:bg-[var(--accent-coral)] data-[state=active]:text-[#111111] py-2">BRD</TabsTrigger>
+                        <TabsTrigger value="srs" className="data-[state=active]:bg-[var(--accent-coral)] data-[state=active]:text-[#111111] py-2">SRS</TabsTrigger>
+                        <TabsTrigger value="stories" className="data-[state=active]:bg-[var(--accent-coral)] data-[state=active]:text-[#111111] py-2">User Stories</TabsTrigger>
+                      </TabsList>
+
+                      {/* Tab 1: Context & Process Modeling */}
+                      <TabsContent value="context" className="space-y-6 outline-none animate-fade-in">
+                        <div className="bg-[#141414] border border-zinc-800 rounded-lg p-5">
+                          <h4 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                            <AlertTriangle className="text-amber-500" size={18} />
+                            Problem Statement (Key Challenges)
+                          </h4>
+                          <ul className="space-y-3 text-zinc-400 text-sm">
+                            <li className="flex gap-2">
+                              <span className="text-[var(--accent-coral)] font-bold">•</span>
+                              <span><strong>Manual &amp; High-Error Planning:</strong> Project scheduling and dependency mapping take 2-3 days manually, making them highly prone to scheduling conflicts and calculation errors.</span>
+                            </li>
+                            <li className="flex gap-2">
+                              <span className="text-[var(--accent-coral)] font-bold">•</span>
+                              <span><strong>Resource Overallocation:</strong> Lack of automated leveling leads to worker overload (&gt;8h/day) or inefficient bench time without skill verification.</span>
+                            </li>
+                            <li className="flex gap-2">
+                              <span className="text-[var(--accent-coral)] font-bold">•</span>
+                              <span><strong>Scope Creep &amp; CR Control:</strong> No standardized workflow or automated impact analysis (evaluating timeline and budget) exists before approving Change Requests (CR).</span>
+                            </li>
+                            <li className="flex gap-2">
+                              <span className="text-[var(--accent-coral)] font-bold">•</span>
+                              <span><strong>Information Asymmetry:</strong> Crucial real-time metrics (like CPI, SPI, and EVA) are absent, preventing clear progress dashboards for stakeholders from PMs to Investors.</span>
+                            </li>
+                          </ul>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          {/* As-Is */}
+                          <div className="border border-amber-900/30 bg-[#18120F]/50 rounded-lg p-5">
+                            <h4 className="text-base font-semibold text-amber-500 mb-3 flex items-center gap-2">
+                              AS-IS Business Process (Current Flow)
+                            </h4>
+                            <ol className="space-y-3 text-zinc-400 text-sm">
+                              <li className="flex gap-2">
+                                <span className="bg-amber-950 text-amber-500 rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0">1</span>
+                                <span>PM manually builds the WBS using Excel or MS Project (takes 2-3 days).</span>
+                              </li>
+                              <li className="flex gap-2">
+                                <span className="bg-amber-950 text-amber-500 rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0">2</span>
+                                <span>Tasks are assigned based on intuition, leading to overallocation without alerts.</span>
+                              </li>
+                              <li className="flex gap-2">
+                                <span className="bg-amber-950 text-amber-500 rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0">3</span>
+                                <span>Customers request changes via email/chat; PM manually estimates impacts, risking delays.</span>
+                              </li>
+                              <li className="flex gap-2">
+                                <span className="bg-amber-950 text-amber-500 rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0">4</span>
+                                <span>Progress and financial reports are aggregated weekly; metrics are delayed and opaque.</span>
+                              </li>
+                            </ol>
+                          </div>
+
+                          {/* To-Be */}
+                          <div className="border border-emerald-900/30 bg-[#0F1812]/50 rounded-lg p-5">
+                            <h4 className="text-base font-semibold text-emerald-500 mb-3 flex items-center gap-2">
+                              TO-BE Business Process (AI-Enabled Flow)
+                            </h4>
+                            <ol className="space-y-3 text-zinc-400 text-sm">
+                              <li className="flex gap-2">
+                                <span className="bg-emerald-950 text-emerald-500 rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0">1</span>
+                                <span>AI automatically proposes the WBS &amp; initial Gantt Chart from a prompt (takes 10 mins).</span>
+                              </li>
+                              <li className="flex gap-2">
+                                <span className="bg-emerald-950 text-emerald-500 rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0">2</span>
+                                <span>AI evaluates skills, costs, and leaves, running Resource Leveling to optimize allocation.</span>
+                              </li>
+                              <li className="flex gap-2">
+                                <span className="bg-emerald-950 text-emerald-500 rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0">3</span>
+                                <span>Customer submits CR; AI runs impact analysis, PM approves, and system saves baseline snapshot.</span>
+                              </li>
+                              <li className="flex gap-2">
+                                <span className="bg-emerald-950 text-emerald-500 rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0">4</span>
+                                <span>CPM algorithm dynamically recalculates critical path; dashboard updates EVA/CPI/SPI in real-time.</span>
+                              </li>
+                            </ol>
+                          </div>
+                        </div>
+                      </TabsContent>
+
+                      {/* Tab 2: BRD */}
+                      <TabsContent value="brd" className="space-y-6 outline-none animate-fade-in">
+                        <div className="bg-[#141414] border border-zinc-800 rounded-lg p-6 space-y-6 max-h-[55vh] overflow-y-auto">
+                          <div>
+                            <h4 className="text-lg font-bold text-white mb-2">1. Project Overview</h4>
+                            <p className="text-zinc-400 text-sm leading-relaxed mb-3">
+                              <strong>Purpose:</strong> Build an intelligent portfolio and project planning management system with core MS Project features, enhanced by AI to automate WBS creation, resource leveling, risk analysis, and Change Request (CR) impact analysis.
+                            </p>
+                            <p className="text-zinc-400 text-sm leading-relaxed">
+                              <strong>Business Objectives:</strong> Reduce WBS generation time by 80% using OpenAI/Gemini; automate resource leveling; standardize multi-step CR workflow with AI impact analysis; provide multi-dimensional dashboards (Gantt, Burndown, EVA).
+                            </p>
+                          </div>
+
+                          <div className="border-t border-zinc-800 pt-4">
+                            <h4 className="text-lg font-bold text-white mb-2">2. Project Scope</h4>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                              <div className="bg-[#1C1C1C] p-3 rounded border border-zinc-800">
+                                <span className="text-emerald-500 text-xs font-semibold uppercase">In-Scope</span>
+                                <ul className="list-disc list-inside text-zinc-400 text-xs mt-2 space-y-1">
+                                  <li>Hierarchical Management: Portfolio &rarr; Project &rarr; Phase &rarr; Task</li>
+                                  <li>Automated Critical Path Method (CPM) calculation</li>
+                                  <li>AI Integration (SOP-AI-001 to SOP-AI-005)</li>
+                                  <li>Change Request (CR) &amp; Approval Workflow</li>
+                                  <li>Time Tracking, Worklogs &amp; CPM Recalculation</li>
+                                  <li>Project Snapshotting (Versioning) &amp; Rollback</li>
+                                  <li>Interactive Gantt Chart, Burndown, CPI/SPI Charts</li>
+                                </ul>
+                              </div>
+                              <div className="bg-[#1C1C1C] p-3 rounded border border-zinc-800">
+                                <span className="text-rose-500 text-xs font-semibold uppercase">Out-of-Scope (Phase 1)</span>
+                                <ul className="list-disc list-inside text-zinc-400 text-xs mt-2 space-y-1">
+                                  <li>Online payment gateways &amp; billing integration</li>
+                                  <li>Internal code repository (Git) integration</li>
+                                  <li>Internal CI/CD pipeline deployment integration</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="border-t border-zinc-800 pt-4">
+                            <h4 className="text-lg font-bold text-white mb-2">3. Stakeholders &amp; Roles (RBAC Matrix)</h4>
+                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                              {[
+                                { role: 'Admin', desc: 'AI Configuration & System Administration' },
+                                { role: 'PM', desc: 'Schedule Approval, CR & Version Management' },
+                                { role: 'BA', desc: 'CR Business Review & Verification' },
+                                { role: 'PO', desc: 'CR Business Sign-Off & Approval' },
+                                { role: 'Member', desc: 'Task Assignment, Daily Worklog Logging' },
+                                { role: 'Customer', desc: 'Initiate Change Requests (CR)' },
+                                { role: 'Investor', desc: 'Read-only Portfolio Dashboard View' }
+                              ].map((r, i) => (
+                                <div key={i} className="bg-[#181818] p-3 rounded border border-zinc-800/80">
+                                  <span className="text-[var(--accent-coral)] text-xs font-bold block">{r.role}</span>
+                                  <span className="text-zinc-500 text-[11px] mt-1 block">{r.desc}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div className="border-t border-zinc-800 pt-4">
+                            <h4 className="text-lg font-bold text-white mb-2">4. Core Business Processes (SOPs)</h4>
+                            <div className="space-y-3">
+                              <div className="bg-[#1A1A1A] p-3 rounded border border-zinc-800">
+                                <strong className="text-zinc-200 text-xs">SOP-AI-001: AI-Powered Project Initiation</strong>
+                                <p className="text-zinc-500 text-[11px] mt-1">PM inputs prompt &rarr; AI generates WBS with estimated durations &amp; dependencies &rarr; System renders initial Gantt chart.</p>
+                              </div>
+                              <div className="bg-[#1A1A1A] p-3 rounded border border-zinc-800">
+                                <strong className="text-zinc-200 text-xs">SOP-RM-001: Resource Allocation Process</strong>
+                                <p className="text-zinc-500 text-[11px] mt-1">AI recommends candidates based on skill match, cost, and leaves. PM assigns &rarr; System runs Resource Leveling to alert if load &gt;8h/day.</p>
+                              </div>
+                              <div className="bg-[#1A1A1A] p-3 rounded border border-zinc-800">
+                                <strong className="text-zinc-200 text-xs">SOP-CR-001: Change Request Process</strong>
+                                <p className="text-zinc-500 text-[11px] mt-1">Customer creates CR &rarr; BA &amp; PO review &rarr; AI runs Impact Analysis &amp; Schedule Optimization &rarr; PM approves &rarr; System saves baseline snapshot and applies changes.</p>
+                              </div>
+                              <div className="bg-[#1A1A1A] p-3 rounded border border-zinc-800">
+                                <strong className="text-zinc-200 text-xs">SOP-PM-002: Time Tracking &amp; CPM Process</strong>
+                                <p className="text-zinc-500 text-[11px] mt-1">Members log work hours daily. CPM recalculation (topological sort + forward/backward pass) triggers to identify float days &amp; the Critical Path on the Gantt chart.</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </TabsContent>
+
+                      {/* Tab 3: SRS */}
+                      <TabsContent value="srs" className="space-y-6 outline-none animate-fade-in">
+                        <div className="bg-[#141414] border border-zinc-800 rounded-lg p-6 space-y-6 max-h-[55vh] overflow-y-auto">
+                          <div>
+                            <h4 className="text-lg font-bold text-white mb-2">1. System Architecture &amp; Tech Stack</h4>
+                            <p className="text-zinc-400 text-sm leading-relaxed mb-3">
+                              The system conforms to a strict Layered Architecture to optimize performance, scalability, and maintainability.
+                            </p>
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-2">
+                              <div className="bg-[#1A1A1A] p-3 rounded border border-zinc-800">
+                                <span className="text-zinc-500 text-[10px] uppercase font-bold block">Frontend</span>
+                                <span className="text-zinc-200 text-xs font-semibold mt-1 block">React 18 + Vite</span>
+                                <span className="text-zinc-500 text-[10px] block">TS, Tailwind, Zustand, TanStack Query</span>
+                              </div>
+                              <div className="bg-[#1A1A1A] p-3 rounded border border-zinc-800">
+                                <span className="text-zinc-500 text-[10px] uppercase font-bold block">Backend</span>
+                                <span className="text-zinc-200 text-xs font-semibold mt-1 block">FastAPI</span>
+                                <span className="text-zinc-500 text-[10px] block">Python 3.11, Pydantic v2</span>
+                              </div>
+                              <div className="bg-[#1A1A1A] p-3 rounded border border-zinc-800">
+                                <span className="text-zinc-500 text-[10px] uppercase font-bold block">Storage &amp; Jobs</span>
+                                <span className="text-zinc-200 text-xs font-semibold mt-1 block">Redis + Celery</span>
+                                <span className="text-zinc-500 text-[10px] block">Asynchronous jobs, MinIO S3-compatible storage</span>
+                              </div>
+                              <div className="bg-[#1A1A1A] p-3 rounded border border-zinc-800">
+                                <span className="text-zinc-500 text-[10px] uppercase font-bold block">Database &amp; AI</span>
+                                <span className="text-zinc-200 text-xs font-semibold mt-1 block">PostgreSQL + AI API</span>
+                                <span className="text-zinc-500 text-[10px] block">SQLAlchemy Async, GPT-4o, Gemini Pro</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="border-t border-zinc-800 pt-4">
+                            <h4 className="text-lg font-bold text-white mb-2">2. Core Algorithms</h4>
+                            <div className="space-y-3">
+                              <div className="bg-[#1C1C1C] p-3 rounded border border-zinc-800">
+                                <strong className="text-zinc-200 text-xs block">CPM (Critical Path Method)</strong>
+                                <span className="text-zinc-400 text-xs mt-1 block">
+                                  Upon task changes, topological sort is executed, followed by forward (ES, EF) and backward (LS, LF) passes to calculate float days. Tasks with Float Days = 0 are marked as the Critical Path on the Gantt chart.
+                                </span>
+                              </div>
+                              <div className="bg-[#1C1C1C] p-3 rounded border border-zinc-800">
+                                <strong className="text-zinc-200 text-xs block">Resource Leveling Algorithm</strong>
+                                <span className="text-zinc-400 text-xs mt-1 block">
+                                  Aggregates daily working hours for each resource across all assignments, incorporates leave configurations, and throws warnings on overallocation (&gt;8h/day).
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="border-t border-zinc-800 pt-4">
+                            <h4 className="text-lg font-bold text-white mb-2">3. Key Functional Requirements</h4>
+                            <ul className="list-disc list-inside text-zinc-400 text-xs space-y-2 leading-relaxed">
+                              <li><strong>Authentication:</strong> JWT-based sessions, bcrypt password hashing, and endpoint-level RBAC check via dependency require_roles().</li>
+                              <li><strong>Project &amp; Task Management:</strong> CRUD for Portfolio, Project, Phase, Task, and Subtasks. Supports FS, SS, FF, SF relationships with Lag Days.</li>
+                              <li><strong>AI Integration:</strong> Non-blocking asynchronous Celery workers process AI tasks (Project Generation, Impact Analysis, Resource Recommender, Risk Analyzer, Doc Parser).</li>
+                              <li><strong>Reporting &amp; Dashboard:</strong> Recharts visualization (Gantt, Burndown, Allocations) and EVA calculations (CPI, SPI, Earned Value).</li>
+                              <li><strong>Change Management:</strong> Standardized CR states (Draft &rarr; Submitted &rarr; Under Review &rarr; Approved &rarr; Implemented) with JSON serialization for project rollback.</li>
+                            </ul>
+                          </div>
+
+                          <div className="border-t border-zinc-800 pt-4">
+                            <h4 className="text-lg font-bold text-white mb-2">4. Non-Functional Requirements</h4>
+                            <ul className="list-disc list-inside text-zinc-400 text-xs space-y-2 leading-relaxed">
+                              <li><strong>Performance:</strong> standard CRUD APIs response time &lt; 200ms; Gantt drag-and-drop CPM recalculations &lt; 500ms.</li>
+                              <li><strong>Security:</strong> sensitive configs and AI keys managed strictly via environment variables (.env); full old-value/new-value audit logs.</li>
+                              <li><strong>Extensibility:</strong> easily integrate new models (e.g. Llama, Claude) by inheriting from BaseAIProvider without changing core logic.</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </TabsContent>
+
+                      {/* Tab 4: User Stories */}
+                      <TabsContent value="stories" className="space-y-6 outline-none animate-fade-in">
+                        <div className="bg-[#141414] border border-zinc-800 rounded-lg p-5 max-h-[55vh] overflow-y-auto">
+                          <h4 className="text-base font-semibold text-white mb-4">Agile User Stories (BA Artifact)</h4>
+                          <div className="space-y-3">
+                            {[
+                              { role: 'Project Manager', prompt: 'I want to input a natural language prompt', goal: 'so that the AI can generate a structured WBS and initial Gantt Chart, reducing kickoff time by 80%.' },
+                              { role: 'Project Manager', prompt: 'I want the system to calculate the Critical Path automatically upon task updates', goal: 'so that I can instantly identify tasks causing delays and optimize scheduling.' },
+                              { role: 'Project Manager', prompt: 'I want the AI to suggest resource matches based on skills and leaves, and warn me on overallocation', goal: 'so that I can optimize workload distribution and prevent burnout.' },
+                              { role: 'Customer', prompt: 'I want to submit Change Requests (CR) through the client portal', goal: 'so that I can easily request adjustments and track their review status.' },
+                              { role: 'Project Manager', prompt: 'I want AI to generate an impact analysis report for CRs and auto-save baselines', goal: 'so that I can safely apply or rollback project updates without losing historical data.' },
+                              { role: 'Member', prompt: 'I want to track time and log work logs daily against my assigned tasks', goal: 'so that the project metrics and critical path calculation stay updated in real-time.' },
+                              { role: 'Investor / Owner', prompt: 'I want a read-only portfolio dashboard showing CPI, SPI, and EVA', goal: 'so that I can monitor the financial and timeline health of the entire project catalog.' }
+                            ].map((story, i) => (
+                              <div key={i} className="border border-zinc-800/80 bg-[#1A1A1A] p-4 rounded-lg flex flex-col gap-2">
+                                <div className="flex items-center gap-2">
+                                  <span className="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-bold text-zinc-300">US_{String(i+1).padStart(2, '0')}</span>
+                                  <span className="text-xs font-semibold text-[var(--accent-coral)]">As a {story.role}</span>
+                                </div>
+                                <div className="text-xs text-zinc-300 pl-2 border-l-2 border-zinc-700">
+                                  <p><strong>I want to</strong> {story.prompt}</p>
+                                  <p className="mt-1"><strong>So that</strong> {story.goal}</p>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </TabsContent>
+                    </Tabs>
+
+                    <div className="mt-6 border-t border-zinc-800 pt-4 flex justify-end">
+                      <DialogClose asChild>
+                        <button
+                          className="px-6 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white text-sm font-medium transition-colors"
+                        >
+                          Close Documentation
+                        </button>
+                      </DialogClose>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+
+                <a
+                  href="https://github.com/NguyenNgocVietThang/ai-project-management"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor="link"
+                  className="flex items-center gap-2 transition-all duration-200"
+                  style={{
+                    padding: '10px 24px',
+                    borderRadius: 100,
+                    border: '1px solid var(--accent-coral)',
+                    color: 'var(--accent-coral)',
+                    fontSize: 14,
+                    fontWeight: 500,
+                    width: 'fit-content',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = 'var(--accent-coral)';
+                    e.currentTarget.style.color = '#111111';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                    e.currentTarget.style.color = 'var(--accent-coral)';
+                  }}
+                >
+                  <Github size={16} />
+                  View on GitHub
+                </a>
+              </div>
             </div>
 
             <p className="font-body text-base mt-4" style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
-              A fully functional project and portfolio management platform, integrating AI to support planning, resource allocation, and risk analysis. The project is designed and documented end-to-end like a commercial BA product — from BRD, SRS, ERD to BPMN and RBAC matrix.
+              As the lead Business Analyst, I designed this enterprise-grade system from the ground up. I authored the comprehensive Business Requirements Document (BRD) and Software Requirements Specification (SRS), modeling core SOPs and system architectures. Leveraging AI vibe coding, I independently built the full-stack product (FastAPI, React, Celery, PostgreSQL) to bring these complex business rules to life.
             </p>
+
+            {/* Key Features */}
+            <div className="mt-6 flex flex-col gap-3">
+              {[
+                { title: 'AI-Powered Initialization (SOP-AI-001)', desc: 'Transforms natural language prompts into structured Work Breakdown Structures (WBS) with estimated durations and dependencies.' },
+                { title: 'CR Impact Analysis (SOP-CR-001)', desc: 'Multi-step approval workflow where AI evaluates cost, risk, and schedule impact before applying changes.' },
+                { title: 'Dynamic Critical Path Method (CPM)', desc: 'Real-time recalculation of ES/EF and LS/LF using topological sorting upon any task changes.' },
+                { title: 'Intelligent Resource Leveling', desc: 'Evaluates skill-matching and leave schedules to recommend assignees while preventing >8h/day overallocation.' },
+                { title: 'Automated Metrics & Reporting', desc: 'Real-time dashboards calculating Earned Value Analysis (EVA), CPI, and SPI, with MinIO-backed DOCX/XLSX exports.' }
+              ].map((feature, i) => (
+                <div key={i} className="flex gap-3 items-start">
+                  <div className="mt-1 flex-shrink-0" style={{ color: 'var(--accent-coral)' }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </div>
+                  <div>
+                    <span className="font-body font-semibold text-sm" style={{ color: 'var(--text-primary)' }}>{feature.title}: </span>
+                    <span className="font-body text-sm" style={{ color: 'var(--text-secondary)' }}>{feature.desc}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 mt-8">
               {[
-                { number: '32', label: 'Database tables', color: 'var(--accent-coral)' },
-                { number: '7', label: 'RBAC roles', color: 'var(--accent-amber)' },
-                { number: '8', label: 'Documents', color: 'var(--accent-coral)' },
+                { number: '40+', label: 'Database Tables', color: 'var(--accent-coral)' },
+                { number: '7', label: 'RBAC Roles', color: 'var(--accent-amber)' },
+                { number: '5', label: 'Core AI SOPs', color: 'var(--accent-coral)' },
               ].map((stat, i) => (
                 <div
                   key={i}

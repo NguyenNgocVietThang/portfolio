@@ -20,6 +20,7 @@
     --font-sans: 'Be Vietnam Pro', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
     --font-serif: 'Instrument Serif', serif;
+    --font-calistoga: 'Calistoga', serif;
 
     --radius: 0.5rem;
   }
@@ -103,6 +104,11 @@
   .font-serif-italic {
     font-family: var(--font-serif);
     font-style: italic;
+    font-weight: 400;
+  }
+
+  .font-calistoga {
+    font-family: var(--font-calistoga);
     font-weight: 400;
   }
 

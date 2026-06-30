@@ -30,25 +30,25 @@ const HeroSection = ({ isReady, scrollTo }: HeroSectionProps) => {
       0
     );
 
-    // Name line 1 - word by word clip-path
-    const words1 = name1Ref.current?.querySelectorAll('.hero-word');
-    if (words1) {
+    // Name typing effect
+    const chars = name1Ref.current?.querySelectorAll('.hero-char');
+    if (chars) {
       tl.fromTo(
-        words1,
-        { clipPath: 'inset(0 0 100% 0)' },
-        { clipPath: 'inset(0 0 0 0)', duration: 0.8, ease: 'power4.out', stagger: 0.15 },
+        chars,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.05, stagger: 0.05, ease: 'steps(1)' },
         0.2
       );
     }
 
-    // Name line 2
-    const words2 = name2Ref.current?.querySelectorAll('.hero-word');
-    if (words2) {
+    // Blinking cursor
+    const cursor = name1Ref.current?.querySelector('.hero-cursor');
+    if (cursor) {
       tl.fromTo(
-        words2,
-        { clipPath: 'inset(0 0 100% 0)' },
-        { clipPath: 'inset(0 0 0 0)', duration: 0.8, ease: 'power4.out', stagger: 0.15 },
-        0.4
+        cursor,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.4, repeat: -1, yoyo: true, ease: 'steps(1)' },
+        0
       );
     }
 
@@ -116,32 +116,15 @@ const HeroSection = ({ isReady, scrollTo }: HeroSectionProps) => {
               BUSINESS ANALYST INTERN
             </div>
 
-            {/* Name Line 1 */}
-            <div ref={name1Ref} className="overflow-hidden">
-              <div className="font-display text-5xl md:text-7xl lg:text-[100px]" style={{ color: 'var(--text-primary)' }}>
-                {['Nguyễn', 'Ngọc'].map((word, i) => (
-                  <span key={i} className="hero-word inline-block mr-[0.2em]" style={{ clipPath: 'inset(0 0 100% 0)' }}>
-                    {word}
+            {/* Name */}
+            <div ref={name1Ref} className="overflow-hidden mb-2">
+              <div className="font-calistoga text-[6vw] sm:text-[32px] md:text-[42px] lg:text-[48px] xl:text-[54px] tracking-tight whitespace-nowrap" style={{ color: 'var(--text-primary)', lineHeight: 1.1 }}>
+                {"Nguyễn Ngọc Việt Thắng".split('').map((char, i) => (
+                  <span key={i} className="hero-char inline-block" style={{ opacity: 0 }}>
+                    {char === ' ' ? '\u00A0' : char}
                   </span>
                 ))}
-              </div>
-            </div>
-
-            {/* Name Line 2 */}
-            <div ref={name2Ref} className="overflow-hidden">
-              <div className="font-display text-5xl md:text-7xl lg:text-[100px]" style={{ color: 'var(--text-primary)' }}>
-                {['Việt', 'Thắng'].map((word, i) => (
-                  <span
-                    key={i}
-                    className="hero-word inline-block mr-[0.2em]"
-                    style={{
-                      clipPath: 'inset(0 0 100% 0)',
-                      textShadow: word === 'Thắng' ? '0 0 60px rgba(255, 107, 91, 0.3)' : 'none',
-                    }}
-                  >
-                    {word}
-                  </span>
-                ))}
+                <span className="hero-cursor inline-block w-[3px] sm:w-[4px] h-[0.9em] bg-[var(--accent-coral)] ml-1 align-middle opacity-0" />
               </div>
             </div>
 

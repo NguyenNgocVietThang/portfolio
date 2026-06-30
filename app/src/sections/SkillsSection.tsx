@@ -12,21 +12,21 @@ interface Skill {
 }
 
 const professionalSkills: Skill[] = [
-  { name: 'Requirements Engineering (BRD/SRS)', percentage: 90, color: 'var(--accent-coral)' },
-  { name: 'Process Modeling (BPMN/SOP)', percentage: 85, color: 'var(--accent-coral)' },
-  { name: 'Database Design (ERD/PostgreSQL)', percentage: 80, color: 'var(--accent-coral)' },
-  { name: 'System Architecture Documentation', percentage: 78, color: 'var(--accent-coral)' },
-  { name: 'API Specification (REST)', percentage: 75, color: 'var(--accent-coral)' },
-  { name: 'AI Integration Requirements', percentage: 70, color: 'var(--accent-coral)' },
+  { name: 'Requirements Engineering (BRD/SRS)', percentage: 80, color: 'var(--accent-coral)' },
+  { name: 'Process Modeling (BPMN/SOP)', percentage: 55, color: 'var(--accent-coral)' },
+  { name: 'Database Design (ERD/PostgreSQL)', percentage: 70, color: 'var(--accent-coral)' },
+  { name: 'System Architecture Documentation', percentage: 45, color: 'var(--accent-coral)' },
+  { name: 'API Specification (REST)', percentage: 35, color: 'var(--accent-coral)' },
+  { name: 'AI Integration Requirements', percentage: 80, color: 'var(--accent-coral)' },
 ];
 
 const techSkills: Skill[] = [
-  { name: 'Draw.io / Diagramming', percentage: 95, color: 'var(--accent-amber)' },
+  { name: 'Draw.io / Diagramming', percentage: 85, color: 'var(--accent-amber)' },
   { name: 'Markdown / Technical Writing', percentage: 90, color: 'var(--accent-amber)' },
-  { name: 'FastAPI / Python', percentage: 82, color: 'var(--accent-amber)' },
-  { name: 'React / TypeScript', percentage: 75, color: 'var(--accent-amber)' },
+  { name: 'FastAPI / Python', percentage: 35, color: 'var(--accent-amber)' },
+  { name: 'React / TypeScript', percentage: 35, color: 'var(--accent-amber)' },
   { name: 'PostgreSQL / SQL', percentage: 85, color: 'var(--accent-amber)' },
-  { name: 'Git / GitHub', percentage: 88, color: 'var(--accent-amber)' },
+  { name: 'Git / GitHub', percentage: 95, color: 'var(--accent-amber)' },
 ];
 
 const otherTools = [

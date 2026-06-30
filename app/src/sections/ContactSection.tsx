@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionHeading from '@/components/SectionHeading';
-import { Mail, Phone, MapPin, Github, Facebook, Send, Check, Loader2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Facebook, Send, Check, Loader2, AlertCircle } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -118,17 +118,61 @@ const ContactSection = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setFormState('loading');
-    // Simulate API call
-    setTimeout(() => {
+
+    // Retrieve Web3Forms access key from environment variables
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
+    if (!accessKey || accessKey === 'your_access_key_here' || accessKey.trim() === '') {
+      // Fallback: If no API key is configured, send via mailto link (opens local mail client)
+      const subjectText = formData.subject || 'Portfolio Contact Message';
+      const bodyText = `Hi Thang,\n\nYou received a new message from your portfolio website contact form:\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
+      
+      const mailtoUrl = `mailto:thangnnv2003@gmail.com?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(bodyText)}`;
+      
+      window.location.href = mailtoUrl;
+      
       setFormState('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
       setTimeout(() => setFormState('idle'), 3000);
-    }, 1500);
+      return;
+    }
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject || 'New Portfolio Contact Form Message',
+          message: formData.message,
+          from_name: 'Nguyen Ngoc Viet Thang - Portfolio'
+        })
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setFormState('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setFormState('idle'), 3000);
+      } else {
+        setFormState('error');
+        setTimeout(() => setFormState('idle'), 4000);
+      }
+    } catch (error) {
+      console.error('Failed to submit form', error);
+      setFormState('error');
+      setTimeout(() => setFormState('idle'), 4000);
+    }
   };
 
   const handleChange = (field: keyof FormData, value: string) => {
@@ -410,14 +454,14 @@ const ContactSection = () => {
                     backgroundColor:
                       formState === 'success'
                         ? '#4CAF50'
-                        : formState === 'loading'
-                          ? 'var(--accent-coral)'
+                        : formState === 'error'
+                          ? '#E53E3E'
                           : 'var(--accent-coral)',
-                    color: formState === 'success' ? 'white' : '#111111',
+                    color: formState === 'success' || formState === 'error' ? 'white' : '#111111',
                     opacity: formState === 'loading' ? 0.8 : 1,
                   }}
                   onMouseEnter={(e) => {
-                    if (formState === 'idle') {
+                    if (formState === 'idle' || formState === 'error') {
                       e.currentTarget.style.filter = 'brightness(1.1)';
                       e.currentTarget.style.transform = 'scale(1.01)';
                     }
@@ -427,7 +471,7 @@ const ContactSection = () => {
                     e.currentTarget.style.transform = 'scale(1)';
                   }}
                   onMouseDown={(e) => {
-                    if (formState === 'idle') e.currentTarget.style.transform = 'scale(0.98)';
+                    if (formState === 'idle' || formState === 'error') e.currentTarget.style.transform = 'scale(0.98)';
                   }}
                   onMouseUp={(e) => {
                     e.currentTarget.style.transform = 'scale(1)';
@@ -435,9 +479,11 @@ const ContactSection = () => {
                 >
                   {formState === 'loading' && <Loader2 size={18} className="animate-spin" />}
                   {formState === 'success' && <Check size={18} />}
+                  {formState === 'error' && <AlertCircle size={18} />}
                   {formState === 'idle' && <Send size={18} />}
                   {formState === 'loading' && 'Sending...'}
                   {formState === 'success' && 'Sent successfully!'}
+                  {formState === 'error' && 'Failed to send. Click to try again.'}
                   {formState === 'idle' && 'Send Message'}
                 </button>
               </div>
