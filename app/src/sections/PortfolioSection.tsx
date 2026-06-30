@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionHeading from '@/components/SectionHeading';
-import { ChevronLeft, ChevronRight, Play, Github, FileText, Check, AlertTriangle, ArrowRight, User, Settings, Info } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, Github, FileText, AlertTriangle } from 'lucide-react';
 import {
   Dialog,
   DialogClose,

@@ -10,7 +10,6 @@ const HeroSection = ({ isReady, scrollTo }: HeroSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
   const captionRef = useRef<HTMLDivElement>(null);
   const name1Ref = useRef<HTMLDivElement>(null);
-  const name2Ref = useRef<HTMLDivElement>(null);
   const ruleRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const bioRef = useRef<HTMLParagraphElement>(null);
