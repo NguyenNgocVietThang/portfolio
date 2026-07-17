@@ -36,12 +36,38 @@ const entries: TimelineEntry[] = [
     tags: ['FastAPI', 'React', 'PostgreSQL', 'AI'],
   },
   {
+    id: '5',
+    category: 'project',
+    date: '02/2026 - 07/2026',
+    title: 'Develop an alarm clock application that incorporates statistical charts',
+    organization: 'University Project - Business Analyst',
+    description: 'Developed features and defined workflows of the application.',
+    tags: ['Figma', 'Draw.io', 'SQL'],
+  },
+  {
+    id: '6',
+    category: 'project',
+    date: '11/2025 - 02/2026',
+    title: 'Develop a website to support programming learning',
+    organization: 'University Project - Business Analyst',
+    description: 'Researched similar websites on the market, analyzed and designed an improved system based on the strengths and weaknesses of existing websites.',
+    tags: ['Figma', 'Draw.io', 'SQL'],
+  },
+  {
     id: '3',
     category: 'certificate',
     date: '2026',
     title: 'Business Analysis Fundamentals',
     organization: 'BA Competency Certificate',
     description: 'Completed a foundational course on Business Analysis, covering: requirement elicitation techniques, As-Is/To-Be analysis, Use Case modeling, and project scope management.',
+  },
+  {
+    id: '4',
+    category: 'certificate',
+    date: '2026',
+    title: 'TOEIC 825 Certificate',
+    organization: 'ETS (Educational Testing Service)',
+    description: 'Certified English proficiency with a score of 825/990, demonstrating strong professional communication and business English capabilities.',
   },
 ];
 
@@ -262,7 +288,7 @@ const ResumeSection = () => {
                   <div className="font-body text-sm font-medium mt-1" style={{ color: 'var(--accent-champagne)' }}>
                     {entry.organization}
                   </div>
-                  <p className="font-body text-[15px] mt-4" style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                  <p className="font-body text-[15px] mt-4" style={{ color: '#ffffff', lineHeight: 1.6 }}>
                     {entry.description}
                   </p>
                   {entry.tags && (

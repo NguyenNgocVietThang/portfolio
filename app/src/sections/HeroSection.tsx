@@ -112,12 +112,12 @@ const HeroSection = ({ isReady, scrollTo }: HeroSectionProps) => {
           <div className="w-full lg:w-[55%] text-center lg:text-left">
             {/* Caption */}
             <div ref={captionRef} className="font-caption mb-6 opacity-0" style={{ color: 'var(--accent-coral)', letterSpacing: 3 }}>
-              BUSINESS ANALYST INTERN
+              BUSINESS ANALYST
             </div>
 
             {/* Name */}
             <div ref={name1Ref} className="overflow-hidden mb-2">
-              <div className="font-calistoga text-[6vw] sm:text-[32px] md:text-[42px] lg:text-[48px] xl:text-[54px] tracking-tight whitespace-nowrap" style={{ color: 'var(--text-primary)', lineHeight: 1.1 }}>
+              <div className="font-heading text-[6vw] sm:text-[32px] md:text-[42px] lg:text-[48px] xl:text-[54px] tracking-tight whitespace-nowrap" style={{ color: 'var(--text-primary)', lineHeight: 1.1 }}>
                 {"Nguyễn Ngọc Việt Thắng".split('').map((char, i) => (
                   <span key={i} className="hero-char inline-block" style={{ opacity: 0 }}>
                     {char === ' ' ? '\u00A0' : char}
@@ -136,8 +136,8 @@ const HeroSection = ({ isReady, scrollTo }: HeroSectionProps) => {
 
             {/* Title */}
             <div ref={titleRef} className="opacity-0">
-              <span className="font-serif-italic text-2xl md:text-4xl" style={{ color: 'var(--accent-champagne)' }}>
-                Business Analyst Intern
+              <span className="font-sans italic text-2xl md:text-4xl" style={{ color: 'var(--accent-champagne)', fontFamily: 'var(--font-sans)' }}>
+                Business Analyst
               </span>
             </div>
 
@@ -145,7 +145,7 @@ const HeroSection = ({ isReady, scrollTo }: HeroSectionProps) => {
             <p
               ref={bioRef}
               className="font-body-large text-base md:text-xl mt-6 mx-auto lg:mx-0 opacity-0"
-              style={{ color: 'var(--text-secondary)', maxWidth: 480, lineHeight: 1.6 }}
+              style={{ color: '#ffffff', maxWidth: 480, lineHeight: 1.6 }}
             >
               Final-year Information Technology student at the Academy of Cryptography Techniques with a GPA of 3.21/4.0. Currently building an AI-integrated Project Management System — a full-stack web application as a personal project to showcase end-to-end BA skills: requirements engineering, process design, system architecture documentation, and AI-driven process automation.
             </p>

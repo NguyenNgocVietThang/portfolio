@@ -110,24 +110,24 @@ const AboutSection = () => {
       />
 
       <div className="max-w-[1280px] mx-auto relative" style={{ zIndex: 2 }}>
-        <SectionHeading number="01" title="OVERVIEW" subtitle="Future Business Analyst" />
+        <SectionHeading number="01" title="OVERVIEW" subtitle="Business Analyst" />
 
         {/* Content row */}
         <div className="mt-16 lg:mt-20">
           {/* Bio */}
-          <div ref={contentRef} className="max-w-4xl" style={{ transformStyle: 'preserve-3d' }}>
+          <div ref={contentRef} className="max-w-none" style={{ transformStyle: 'preserve-3d' }}>
             <div className="font-caption mb-6" style={{ color: 'var(--accent-coral)' }}>
               ABOUT ME
             </div>
             <div className="space-y-4">
-              <p className="font-body-large text-lg md:text-xl" style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
+              <p className="font-body-large text-lg md:text-xl" style={{ color: '#ffffff', lineHeight: 1.7 }}>
                 Final-year Information Technology student at the Academy of Cryptography Techniques with a GPA of 3.21/4.0. Strong interest in Business Analysis, Software Development Life Cycle (SDLC), and system design.
               </p>
-              <p className="font-body-large text-lg md:text-xl" style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
+              <p className="font-body-large text-lg md:text-xl" style={{ color: '#ffffff', lineHeight: 1.7 }}>
                 Experienced in analyzing business requirements through academic projects, creating system models, and documenting software requirements.
               </p>
-              <p className="font-body-large text-lg md:text-xl" style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
-                Seeking a Business Analyst Intern position to further develop expertise in requirement gathering, process analysis, User Story creation, Use Case modeling, and stakeholder communication.
+              <p className="font-body-large text-lg md:text-xl" style={{ color: '#ffffff', lineHeight: 1.7 }}>
+                Seeking a Business Analyst position to further develop expertise in requirement gathering, process analysis, User Story creation, Use Case modeling, and stakeholder communication.
               </p>
             </div>
             
@@ -145,13 +145,13 @@ const AboutSection = () => {
                 ].map((strength, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <CheckCircle2 size={20} style={{ color: 'var(--accent-amber)', flexShrink: 0, marginTop: 4 }} />
-                    <span className="font-body text-base md:text-lg" style={{ color: 'var(--text-secondary)' }}>{strength}</span>
+                    <span className="font-body text-base md:text-lg" style={{ color: '#ffffff' }}>{strength}</span>
                   </li>
                 ))}
               </ul>
               <div className="mt-8 inline-block px-5 py-2.5 rounded-full border transition-colors hover:bg-[var(--surface-hover)]" style={{ borderColor: 'var(--border-active)', backgroundColor: 'var(--surface)' }}>
                 <span className="font-body font-medium" style={{ color: 'var(--accent-champagne)' }}>Language:</span>
-                <span className="font-body ml-2" style={{ color: 'var(--text-primary)' }}>English B2 Level</span>
+                <span className="font-body ml-2" style={{ color: 'var(--text-primary)' }}>TOEIC 825 (English B2 Level)</span>
               </div>
             </div>
           </div>
@@ -189,7 +189,7 @@ const AboutSection = () => {
                 </h3>
                 <ul className="space-y-2">
                   {comp.items.map((item, j) => (
-                    <li key={j} className="font-body text-sm" style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                    <li key={j} className="font-body text-sm" style={{ color: '#ffffff', lineHeight: 1.6 }}>
                       {item}
                     </li>
                   ))}

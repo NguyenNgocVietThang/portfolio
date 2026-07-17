@@ -24,7 +24,7 @@ const Footer = ({ scrollTo }: FooterProps) => {
               THANGNNV
             </div>
             <div className="font-caption mt-2" style={{ color: 'var(--text-secondary)' }}>
-              Business Analyst Intern
+              Business Analyst
             </div>
           </div>
 

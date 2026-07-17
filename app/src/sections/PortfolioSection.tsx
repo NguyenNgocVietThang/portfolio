@@ -631,7 +631,7 @@ const PortfolioSection = () => {
               </div>
             </div>
 
-            <p className="font-body text-base mt-4" style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
+            <p className="font-body text-base mt-4" style={{ color: '#ffffff', lineHeight: 1.7 }}>
               As the lead Business Analyst, I designed this enterprise-grade system from the ground up. I authored the comprehensive Business Requirements Document (BRD) and Software Requirements Specification (SRS), modeling core SOPs and system architectures. Leveraging AI vibe coding, I independently built the full-stack product (FastAPI, React, Celery, PostgreSQL) to bring these complex business rules to life.
             </p>
 
@@ -650,7 +650,7 @@ const PortfolioSection = () => {
                   </div>
                   <div>
                     <span className="font-body font-semibold text-sm" style={{ color: 'var(--text-primary)' }}>{feature.title}: </span>
-                    <span className="font-body text-sm" style={{ color: 'var(--text-secondary)' }}>{feature.desc}</span>
+                    <span className="font-body text-sm" style={{ color: '#ffffff' }}>{feature.desc}</span>
                   </div>
                 </div>
               ))}
@@ -705,7 +705,7 @@ const PortfolioSection = () => {
           <h3 className="font-heading-2 text-3xl md:text-5xl" style={{ color: 'var(--text-primary)' }}>
             TESTIMONIALS
           </h3>
-          <p className="font-body-large text-lg mt-3" style={{ color: 'var(--text-secondary)' }}>
+          <p className="font-body-large text-lg mt-3" style={{ color: '#ffffff' }}>
             Feedback from colleagues and mentors
           </p>
 
@@ -764,10 +764,10 @@ const PortfolioSection = () => {
                           {t.author?.charAt(0)}
                         </div>
                         <div>
-                          <div className="font-body text-base font-semibold" style={{ color: 'var(--text-primary)' }}>
+                          <div className="font-body text-base font-semibold" style={{ color: '#ffffff' }}>
                             {t.author}
                           </div>
-                          <div className="font-caption" style={{ color: 'var(--text-secondary)' }}>
+                           <div className="font-caption" style={{ color: '#ffffff' }}>
                             {t.role}
                           </div>
                         </div>
