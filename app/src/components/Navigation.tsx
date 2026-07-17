@@ -110,7 +110,7 @@ const Navigation = ({ scrollTo }: NavigationProps) => {
 
           {/* CTA button */}
           <a
-            href="https://drive.google.com/file/d/18WslqjXZN5bgS1ldUMU-cni_gJTYQiO2/view?usp=sharing"
+            href="https://drive.google.com/file/d/19Vh0z1R4lWKdIl8nSWM7_9krwSWFZmYp/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:block transition-all duration-200"

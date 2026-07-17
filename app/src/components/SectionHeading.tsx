@@ -78,7 +78,7 @@ const SectionHeading = ({ number, title, subtitle }: SectionHeadingProps) => {
         </h2>
         <div className="hidden md:block fade-in mb-3" style={{ width: 120, height: 1, backgroundColor: 'var(--border-color)' }} />
       </div>
-      <p className="fade-in font-serif-italic text-xl md:text-2xl mt-4" style={{ color: 'var(--accent-champagne)' }}>
+      <p className="fade-in text-xl md:text-2xl mt-4" style={{ color: 'var(--accent-champagne)' }}>
         {subtitle}
       </p>
     </div>

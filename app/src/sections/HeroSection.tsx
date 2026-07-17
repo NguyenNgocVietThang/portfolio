@@ -136,7 +136,7 @@ const HeroSection = ({ isReady, scrollTo }: HeroSectionProps) => {
 
             {/* Title */}
             <div ref={titleRef} className="opacity-0">
-              <span className="font-sans italic text-2xl md:text-4xl" style={{ color: 'var(--accent-champagne)', fontFamily: 'var(--font-sans)' }}>
+              <span className="font-sans text-2xl md:text-4xl" style={{ color: 'var(--accent-champagne)', fontFamily: 'var(--font-sans)' }}>
                 Business Analyst
               </span>
             </div>
